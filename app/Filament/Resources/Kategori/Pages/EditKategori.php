@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Kategoris\Pages;
+namespace App\Filament\Resources\Kategori\Pages;
 
-use App\Filament\Resources\Kategoris\KategoriResource;
+use App\Filament\Resources\Kategori\KategoriResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 

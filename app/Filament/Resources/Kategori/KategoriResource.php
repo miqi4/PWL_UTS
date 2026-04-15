@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Kategoris;
+namespace App\Filament\Resources\Kategori;
 
-use App\Filament\Resources\Kategoris\Pages\CreateKategori;
-use App\Filament\Resources\Kategoris\Pages\EditKategori;
-use App\Filament\Resources\Kategoris\Pages\ListKategoris;
-use App\Filament\Resources\Kategoris\Schemas\KategoriForm;
-use App\Filament\Resources\Kategoris\Tables\KategorisTable;
+use App\Filament\Resources\Kategori\Pages\CreateKategori;
+use App\Filament\Resources\Kategori\Pages\EditKategori;
+use App\Filament\Resources\Kategori\Pages\ListKategori;
+use App\Filament\Resources\Kategori\Schemas\KategoriForm;
+use App\Filament\Resources\Kategori\Tables\KategoriTable;
 use App\Models\Kategori;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -17,6 +17,12 @@ use Filament\Tables\Table;
 class KategoriResource extends Resource
 {
     protected static ?string $model = Kategori::class;
+
+    protected static ?string $slug = 'kategori';
+
+    protected static ?string $modelLabel = 'kategori';
+
+    protected static ?string $pluralModelLabel = 'kategori';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
@@ -29,7 +35,7 @@ class KategoriResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return KategorisTable::configure($table);
+        return KategoriTable::configure($table);
     }
 
     public static function getRelations(): array
@@ -42,7 +48,7 @@ class KategoriResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListKategoris::route('/'),
+            'index' => ListKategori::route('/'),
             'create' => CreateKategori::route('/create'),
             'edit' => EditKategori::route('/{record}/edit'),
         ];

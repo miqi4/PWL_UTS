@@ -1,12 +1,12 @@
 <?php
-namespace App\Filament\Resources\Kategoris\Tables;
+namespace App\Filament\Resources\Kategori\Tables;
 
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class KategorisTable
+class KategoriTable
 {
     public static function configure(Table $table): Table
     {

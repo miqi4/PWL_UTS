@@ -1,5 +1,5 @@
 <?php
-namespace App\Filament\Resources\Kategoris\Schemas;
+namespace App\Filament\Resources\Kategori\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
