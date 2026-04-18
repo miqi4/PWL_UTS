@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Suppliers\Tables;
 
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables;
@@ -39,9 +40,20 @@ class SuppliersTable
             ])
             ->actions([
                 EditAction::make(),
+                DeleteAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus supplier?')
+                    ->modalDescription('Supplier ini beserta seluruh data stok yang terhubung akan dihapus permanen.')
+                    ->modalSubmitActionLabel('Ya, hapus permanen'),
             ])
             ->bulkActions([
-                DeleteBulkAction::make(),
+                DeleteBulkAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus supplier terpilih?')
+                    ->modalDescription('Semua supplier yang dipilih beserta seluruh data stok yang terhubung akan dihapus permanen.')
+                    ->modalSubmitActionLabel('Ya, hapus permanen'),
             ]);
     }
 }

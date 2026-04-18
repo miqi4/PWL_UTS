@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\Barangs\Tables;
 
-use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -42,9 +43,20 @@ class BarangsTable
             ])
             ->actions([
                 EditAction::make(),
+                DeleteAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus barang?')
+                    ->modalDescription('Barang ini beserta seluruh data stok dan detail penjualannya akan dihapus permanen.')
+                    ->modalSubmitActionLabel('Ya, hapus'),
             ])
             ->bulkActions([
-                DeleteBulkAction::make(),
+                DeleteBulkAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus barang terpilih?')
+                    ->modalDescription('Semua barang yang dipilih beserta seluruh data stok dan detail penjualannya akan dihapus permanen.')
+                    ->modalSubmitActionLabel('Ya, hapus'),
             ]);
     }
 }

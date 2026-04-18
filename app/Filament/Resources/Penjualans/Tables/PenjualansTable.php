@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Penjualans\Tables;
 
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables;
@@ -44,9 +45,20 @@ class PenjualansTable
             ])
             ->actions([
                 EditAction::make(),
+                DeleteAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus penjualan?')
+                    ->modalDescription('Data penjualan ini beserta seluruh detail penjualannya akan dihapus permanen.')
+                    ->modalSubmitActionLabel('Ya, hapus'),
             ])
             ->bulkActions([
-                DeleteBulkAction::make(),
+                DeleteBulkAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus penjualan terpilih?')
+                    ->modalDescription('Semua penjualan yang dipilih beserta seluruh detail penjualannya akan dihapus permanen.')
+                    ->modalSubmitActionLabel('Ya, hapus'),
             ]);
     }
 }

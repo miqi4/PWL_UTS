@@ -13,7 +13,12 @@ class EditUser extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->icon('heroicon-o-trash')
+                ->requiresConfirmation()
+                ->modalHeading('Hapus user?')
+                ->modalDescription('User ini beserta seluruh data stok, penjualan, dan detail penjualannya akan dihapus permanen.')
+                ->modalSubmitActionLabel('Ya, hapus permanen'),
         ];
     }
 }

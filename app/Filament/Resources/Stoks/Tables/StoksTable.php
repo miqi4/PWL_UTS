@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Stoks\Tables;
 
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables;
@@ -44,9 +45,12 @@ class StoksTable
             ])
             ->actions([
                 EditAction::make(),
+                DeleteAction::make()
+                    ->icon('heroicon-o-trash'),
             ])
             ->bulkActions([
-                DeleteBulkAction::make(),
+                DeleteBulkAction::make()
+                    ->icon('heroicon-o-trash'),
             ]);
     }
 }

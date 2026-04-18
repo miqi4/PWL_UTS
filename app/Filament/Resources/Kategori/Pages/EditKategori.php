@@ -13,7 +13,12 @@ class EditKategori extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
+            DeleteAction::make()
+                ->icon('heroicon-o-trash')
+                ->requiresConfirmation()
+                ->modalHeading('Hapus kategori?')
+                ->modalDescription('Tindakan ini akan menghapus kategori beserta semua barang, stok, dan detail penjualan yang terhubung. Data yang sudah dihapus tidak dapat dikembalikan.')
+                ->modalSubmitActionLabel('Ya, hapus permanen'),
         ];
     }
 }

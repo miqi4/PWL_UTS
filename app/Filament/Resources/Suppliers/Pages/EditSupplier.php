@@ -13,7 +13,12 @@ class EditSupplier extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->icon('heroicon-o-trash')
+                ->requiresConfirmation()
+                ->modalHeading('Hapus supplier?')
+                ->modalDescription('Supplier ini beserta seluruh data stok yang terhubung akan dihapus permanen.')
+                ->modalSubmitActionLabel('Ya, hapus permanen'),
         ];
     }
 }

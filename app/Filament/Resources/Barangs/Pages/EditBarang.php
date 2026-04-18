@@ -13,7 +13,12 @@ class EditBarang extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->icon('heroicon-o-trash')
+                ->requiresConfirmation()
+                ->modalHeading('Hapus barang?')
+                ->modalDescription('Barang ini beserta seluruh data stok dan detail penjualannya akan dihapus permanen.')
+                ->modalSubmitActionLabel('Ya, hapus'),
         ];
     }
 }

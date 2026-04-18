@@ -13,7 +13,12 @@ class EditLevel extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->icon('heroicon-o-trash')
+                ->requiresConfirmation()
+                ->modalHeading('Hapus level?')
+                ->modalDescription('Level ini akan menghapus seluruh user, stok, penjualan, dan detail penjualan yang terhubung secara permanen.')
+                ->modalSubmitActionLabel('Ya, hapus permanen'),
         ];
     }
 }

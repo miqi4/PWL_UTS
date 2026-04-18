@@ -1,8 +1,9 @@
 <?php
 namespace App\Filament\Resources\Kategori\Tables;
 
-use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -26,9 +27,20 @@ class KategoriTable
             ])
             ->actions([
                 EditAction::make(),
+                DeleteAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus kategori?')
+                    ->modalDescription('Kategori yang dihapus akan ikut menghapus semua barang, stok, dan detail penjualan yang terhubung.')
+                    ->modalSubmitActionLabel('Ya, hapus permanen'),
             ])
             ->bulkActions([
-                DeleteBulkAction::make(),
+                DeleteBulkAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus kategori terpilih?')
+                    ->modalDescription('Semua kategori yang dipilih akan dihapus permanen beserta seluruh barang, stok, dan detail penjualan yang terhubung.')
+                    ->modalSubmitActionLabel('Ya, hapus permanen'),
             ]);
     }
 }

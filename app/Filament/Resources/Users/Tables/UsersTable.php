@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables;
@@ -38,9 +39,20 @@ class UsersTable
             ])
             ->actions([
                 EditAction::make(),
+                DeleteAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus user?')
+                    ->modalDescription('User ini beserta seluruh data stok, penjualan, dan detail penjualannya akan dihapus permanen.')
+                    ->modalSubmitActionLabel('Ya, hapus permanen'),
             ])
             ->bulkActions([
-                DeleteBulkAction::make(),
+                DeleteBulkAction::make()
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus user terpilih?')
+                    ->modalDescription('Semua user yang dipilih beserta seluruh data stok, penjualan, dan detail penjualannya akan dihapus permanen.')
+                    ->modalSubmitActionLabel('Ya, hapus permanen'),
             ]);
     }
 }
